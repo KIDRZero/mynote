@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>note@hibernate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+</head>
+<body>
+<h1 id="-center-hibernate-"><center>hibernate笔记</h1>
+<hr>
+<h2 id="1-hibernate-">1.hibernate是一个持久层框架</h2>
+<p><br/></p>
+<p><center><img src="model.png" alt="框架模型"></center></p>
+<h2 id="2-orm">2.什么是orm</h2>
+<ul>
+<li>Object relationship mapping</li><li>编程语言：oop</li><li>数据库：rdbms</li></ul>
+<h2 id="3-hibernate-">3.第一个hibernate应用程序</h2>
+<ol>
+<li>新建立一个工程，并且加入hibernate的支持（4.1）</li><li>创建PO及配置文件(建议新建一个表)</li><li>使用API来操作PO对象<ul>
+<li>获取session</li><li>开启事务</li><li>执行操作 session.save()</li><li>提交事务</li><li>关闭连接</li></ul>
+</li></ol>
+<h2 id="4-">4.核心配置文件</h2>
+<ul>
+<li>一个数据源只需要一个核心配置文件。这个文件中包含三类内容：<ul>
+<li>数据源配置</li><li>Hibernate的属性配置：例如show_sql,format_sql</li><li>加载映射文件</li></ul>
+</li></ul>
+<h2 id="5-">5.映射文件的常用标记</h2>
+<ul>
+<li>对类的配置:<code>&lt;class name=”类名” table=”表名”&gt;</code></li><li>oid属性的映射:<pre><code>  &lt;id name=”属性名” type=”类型”&gt;
+  　　&lt;column name=”列名”/&gt;  
+  　　&lt;generator&gt;  
+  &lt;/id&gt;
+</code></pre></li><li>普通属性的映射:<code>&lt;property&gt;&lt;/property&gt;</code></li></ul>
+<h2 id="6-mybatis-hibernate-">6.mybatis和hibernate区别</h2>
+<ul>
+<li>Mybatis半自动，只需要写sql语句</li><li>hibernate全自动，只需要操作对象即可，sql语句它会替我们完成</li></ul>
+<h2 id="7-session">7.如何创建Session</h2>
+<ul>
+<li>Configuration：配置文件</li><li>SessionFactory：session工厂</li><li>Session：核心接口</li><li>Code：<pre><code>  Configuration config = new Configuration().configure();
+  ServiceRegistry register = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
+  SessionFactory factory = config.buildSessionFactory(register);
+  Session session = factory.openSession();
+  session.beginTransaction();
+  ...
+  session.getTransaction().commit();
+  session.close();
+  factory.close();
+</code></pre></li></ul>
+<h2 id="8-session-">8.Session是什么？</h2>
+<ul>
+<li>Session是应用程序与hibernate之间的会话，它的作用是用来操作经过映射的实体对象</li><li>同时，session也是个容器，它可临时保存着PO对象的引用</li><li>也就是说session可以缓存数据库的数据</li></ul>
+<h2 id="9-hibernate-">9.hibernate对对象修改</h2>
+<p>hibernate中如果对对象做了修改，若纳入到session的管理，不执行session的update语句也能将做出的修改写入数据库中</p>
+<h2 id="10-po-po-">10.PO对象的三个状态(PO对象的生命周期)</h2>
+<ul>
+<li>瞬时态：从没有持久化，也没有纳入到session的管理</li><li>持久态：纳入session的管理</li><li>游离态：曾经是持久化对象，当前不与session关联<br/><br><center><img src="lifecycle.png" alt="持久化对象的生命周期"><center/></li></ul>
+<h2 id="11-">11.常用的方法</h2>
+<ul>
+<li>flush：刷新</li><li>save：插入;忽略主键的设置</li><li>persist：插入，主键手动设置会报错</li><li>load：加载数据，如果数据库中没有相应的记录，则会抛出异常对象不找到(org.hibernate.ObjectNotFoundException)</li><li>get： 根据oid获得对应的PO对象，如果查询不到数据，返回 null</li><li>evict：从session中移除一个实体</li><li>clear：从session中移除所有的对象</li><li>close：关闭session，并从session中移除所有对象</li><li>update：修改游离态的对象（将游离态对象转成持久态对象）</li><li>delete：删除</li></ul>
+<h2 id="12-get-load-">12.get与load的区别</h2>
+<ul>
+<li>作用：都是根据oid获取对应的实体</li><li>区别：<ol>
+<li>get会立即执行查询语句，得到的是真实对象，如果找不到，则返回null；</li><li>load不会立即执行查询语句，返回一个代理对象，当需要访问这个实体时，才会发送sql语句，如果实体不存在，则抛出ObjectNotFoundException异常；</li></ol>
+</li><li>相同点：<ul>
+<li>查询时，先查询session缓存，如找到，无论找到的是真实对象还是代理对象，都不会再发sql语句；</li></ul>
+</li></ul>
+<h2 id="13-">13.主键的设计事项</h2>
+<ul>
+<li>每个表都应该有主键，与之对应的实体也应该有个oid</li><li>主键的设置应该是无意义的，最好是数字</li><li>hibernate的主键生成方式主要方式：<ol>
+<li>increment：自增长(最大值+1），支持int,long,short</li><li>indentity：mysql，db2，ms sqlserver支持，数据库自身的自增长</li><li>sequence：序列<ul>
+<li>sql查询<br> <code>select hibernate_sequence.nextval from dual;</code><br> <code>select sq_表名.nextval from dual;</code></li><li>配置文件<pre><code>&lt;generator class=&quot;sequence&quot;&gt;
+     &lt;param name=&quot;sequence&quot;&gt;sq_表名&lt;/param&gt;
+ &lt;/generator&gt;
+</code></pre></li></ul>
+</li><li>hilo：高低算法</li><li>native：先identity，sequence，hilo</li><li>assigned：手动分配，不建议使用</li><li>uuid：生成128位的码，返回的是字符串，并发Insert要求较高的系统，推荐采用</li><li>foreign：外键（一对一）</li></ol>
+</li><li>一般而言，利用uuid.hex方式生成Hibernate主键将提供最好的性能和数据库平台适应性</li></ul>
+<h2 id="14-po-">14.PO生命周期</h2>
+<ul>
+<li>POJO+XML</li><li>POJO+annotation</li><li>mapped Entity</li></ul>
+<h2 id="15-">15.关系映射的学习方法</h2>
+<ul>
+<li>表之间的关系</li><li>类之间的关系</li><li>映射文件的配置</li></ul>
+<h2 id="16-powerdesigner">16.PowerDesigner</h2>
+<ul>
+<li>建模工具<ul>
+<li>概念E-R图：不依赖与具体的数据库</li><li>物理E-R图：可以直接生成sql语句</li></ul>
+</li><li>步骤<ul>
+<li>新建一个概念E-R图</li><li>建立关系后，转成物理E-R图</li><li>生成（oracle时，要转成大写）sql语句</li></ul>
+</li></ul>
+<h2 id="17-">17.一对多映射</h2>
+<ul>
+<li>表关系：主外键</li><li>类之间的系：Student,TClass;</li><li>映射文件：<ul>
+<li>Student.hbm.xml<ul>
+<li>many-to-one</li></ul>
+</li><li>Tclass.hbm.xml<ul>
+<li>Set<ul>
+<li>key</li><li>one-to-many</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<h2 id="18-">18.注意事项</h2>
+<ul>
+<li>动态sql：(class标记中的属性<code>dynamic-insert</code>,<code>dynamic-update</code>)</li><li>集合排序：set标记中指定<code>order-by=&quot;字段 asc|desc&quot;</code></li></ul>
+<h2 id="19-hibernate-">19.解决hibernate的懒加载</h2>
+<ul>
+<li>将lazy改成false</li><li>可以采用迫切左外连语句</li><li>延迟session的关闭时间（jsp显示完毕后才关闭）<ul>
+<li>通过OpenSessionInView的过滤器来实现,配置时，应该放在第一个Filter的位置上</li></ul>
+</li></ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
