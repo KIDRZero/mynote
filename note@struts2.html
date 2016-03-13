@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>note@struts2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+</head>
+<body>
+<h1 id="-center-struts2-"><center>struts2笔记</h1>
+<hr>
+<h2 id="1-struts2-">1.Struts2介绍</h2>
+<ul>
+<li>Struts2是一个MVC层的框架</li><li>是Struts1+Webwork两个框架结合而成的，大部分的功能都采用的是webwork的组件</li><li>Struts2框架采用了非侵入式设计</li><li>POJO：纯的java对象</li></ul>
+<h2 id="2-hello-struts2">2.hello Struts2</h2>
+<ol>
+<li>导包</li><li>配置web.xml文件</li><li>编写Action类，这是我们的逻辑控制器</li><li>配置src/struts.xml，核心配置文件中配置action</li></ol>
+<h2 id="3-strutspreparedandexecutefilter">3.StrutsPreparedAndExecuteFilter</h2>
+<ul>
+<li>为Struts2的前端控制器，需要在xml文件中配置</li></ul>
+<h2 id="4-action">4.Action</h2>
+<ul>
+<li>后端控制器：<ul>
+<li>程序开发的核心</li></ul>
+</li><li>Action的配置：<ul>
+<li>package包：<ul>
+<li>一个包中可以包含多个action</li><li>package中常用的属性：<ul>
+<li>name必填，package的名，其他package通过此名找到这个包</li><li>namespace 命名空间(很有用),这个包中的所有Action的请求路径必须在此命名空间下</li><li>extends 父包</li></ul>
+</li></ul>
+</li><li>Action：配置action<ul>
+<li>name:action的请求名</li><li>class:Action的类名(全称)</li><li>method:方法名，比如save</li></ul>
+</li></ul>
+</li></ul>
+<h2 id="5-result-">5.Result标记</h2>
+<ul>
+<li>这个标记是action的子标记，用来设置action的跳转资源的路径及方式<pre><code>  &lt;result name=”success”&gt;/success.jsp&lt;/result&gt;
+</code></pre><ul>
+<li>name:资源名</li><li>success.jsp：资源地址</li></ul>
+</li></ul>
+<h2 id="6-action-servlet-api">6.Action如何访问Servlet的API</h2>
+<ul>
+<li>struts2中<ul>
+<li>注入的方法（通过IOC方式将servlet对象注入到Action中）<ul>
+<li>为当前Action提供对session的支持<ol>
+<li>Action实现一个接口：SessionAware</li><li>实现setSession方法，这个方法由struts2来调用，并传递一个代表session的map</li></ol>
+</li></ul>
+</li><li>利用上下文(由Struts2提供)方法<ul>
+<li>使用解耦的方式访问ServletAPI<ul>
+<li>只需要通过一个ActionContext对象即可<br>ActionContext ctx=ActionContext.getContext();<br>ctx=ActionContext.getContext();<br>ctx.getSession();<br>ctx.getApplication();<br>ctx.get(“request”);<br>ctx.getParameters();</li></ul>
+</li></ul>
+</li></ul>
+</li><li>原生的ServletAPI访问方法<ul>
+<li>注入方式：实现ServletRequestAware接口</li><li>上下文：ServletActionContext.getRequest()等方法</li></ul>
+</li></ul>
+<h2 id="7-action-result-">7.Action返回Result的类型</h2>
+<ul>
+<li>dispatcher：<ul>
+<li>相当于forward，但只能转发到固定的资源，比如jsp，而不能转给另一个action</li></ul>
+</li><li>chain：<ul>
+<li>可以将请求转给另一个action</li></ul>
+</li><li>redirect：<ul>
+<li>重定向到任何资源，包括action<br>参数有location</li></ul>
+</li><li>redirectAction：<ul>
+<li>重定向到另一个action,甚至是其他包</li><li>参数有actionName，namespace</li></ul>
+</li></ul>
+<h2 id="8-struts1-utf-8-">8.相对于Struts1配置简单,utf-8不需要转码</h2>
+<h2 id="9-struts1-servlet-struts2-">9.Struts1封装Servlet,Struts2封装过滤器</h2>
+<h2 id="10-servlet-struts2-">10.Servlet整个过程创建一个对象,而Struts2每提交一次创建一个新对象</h2>
+<h2 id="11-debug-">11.debug调试方法</h2>
+<ul>
+<li>设置断点(在代码左侧的边框上双击鼠标左键)<ul>
+<li>F6单步执行</li><li>F5进入方法体</li><li>F7从方法中返回</li><li>F8进入下一个断点，如没有则正常运行</li></ul>
+</li></ul>
+<h2 id="12-action-">12.Action的配置</h2>
+<ul>
+<li>通配符的使用：<ul>
+<li>Action中的name属性可以使用*作为通配符，只要匹配到name的格式，就会找到对应的方法，在method属性中可以使用{0}和{1}.数字表示*的序数</li></ul>
+</li><li>配置exception-mapping<ul>
+<li>当action出现异常的时候，将会将请求转发给对应的result。</li></ul>
+</li></ul>
+<h2 id="13-">13.动态方法调用</h2>
+<ul>
+<li>可以简化action的配置，但不建议使用，因为不够安全，默认Struts2对此功能禁用</li><li>如果使用，则需要修改配置<pre><code>  &lt;constant name=&quot;&quot; value=&quot;true&quot;&gt;&lt;/constant&gt; 
+</code></pre>vaue设置为true。动态方法调用时，需要在url中包含方法，格式是actionName.action</li></ul>
+<h2 id="14-actionsupport-">14.ActionSupport类</h2>
+<ul>
+<li>这个类实现了很多Action都需要实现的功能，一般来说，我们在定义一个Action时，最好是继承此类</li><li>如果我们配置Action时不指定class，那么这个action将会实例一个ActionSupport对象</li></ul>
+<h2 id="15-">15.参数组装的方式</h2>
+<ul>
+<li>直接组装Action的属性</li><li>组装到action中的一个实体对象中;要求表单的组件名应该是  对象名.属性名</li><li>通过ModelDriven接口返回一个对象；(接口上最好加上泛型）</li></ul>
+<h2 id="16-">16.类型转换</h2>
+<ul>
+<li>内置的转换器：</li><li>自定义转换器：(不常用)</li></ul>
+<h2 id="17-">17.内置转换的类型</h2>
+<ul>
+<li>8种基本数据类型及它们的包装类</li><li>String</li><li>Date</li><li>数组</li><li>List集合：可以通过[ ]来确定list中的元素位置</li></ul>
+<h2 id="18-ognl">18.ognl</h2>
+<ul>
+<li>对象图导航语言，是一个表达式语言：是el表达式的增强版，是一个独立的组件</li><li>Struts2集成了ognl，在Struts2中可直接使用ognl表达式</li></ul>
+<h2 id="19-ognl-">19.ognl的基础</h2>
+<ul>
+<li>ognl上下文  map</li><li>表达式</li><li>根元素</li></ul>
+<h2 id="20-struts2-ognl-">20.struts2中的ognl上下文</h2>
+<ol>
+<li>Struts2的ognl上下文中包含很多作用域对象，例如，request，session，application等，根元素是valueStack</li><li>Struts2会自动向valueStack中压入textProvider对象和当前的Action对象</li><li>如果想向valuestack中增加新的元素,可以通过ActionContext.getContext().getValueStack()得到值栈，并向值栈中添加元素</li><li>访问值栈的表达式<ul>
+<li>[n]  ：从某个位置的元素开始取</li><li>[n].top:只取某个位置元素的某属性</li></ul>
+</li></ol>
+<h2 id="21-ognl-">21.ognl中常用的符号</h2>
+<ul>
+<li>#：获取非根的元素</li><li>%：计算ognl表达式</li><li>$：在配置文件中使用ognl</li></ul>
+<h2 id="22-">22.拦截器</h2>
+<ul>
+<li>这是struts2最重要的一个组件，Struts2的大多数功能都是通过拦截器来实现的；例如，文件上传，参数组装，重复提交，modelDriven等功能；</li></ul>
+<h2 id="23-struts2-">23.Struts2的拦截器分为两种</h2>
+<ul>
+<li>预定义的</li><li>自定义的</li></ul>
+<h2 id="24-">24.代理模式</h2>
+<ul>
+<li>解决：<ul>
+<li>我们不能直接访问一个对象<ul>
+<li>抽象角色</li><li>代理角色</li><li>真实角色</li></ul>
+</li></ul>
+</li></ul>
+<h2 id="25-struts2-">25.Struts2拦截器的工作原理</h2>
+<ul>
+<li>Struts2会根据struts.xml配置文件，动态的创建一个代理对象，这个代理对象的名字是ActionProxy，它里面包含了n个拦截器以及Action</li></ul>
+<h2 id="26-">26.配置拦截器</h2>
+<ul>
+<li>例子：实现表单重复提交<ol>
+<li>自定义Action,配置在action里,需要在Action节点中增加token拦截器</li><li>在表单中增加<s:token>标记</li></ol>
+</li></ul>
+<h2 id="27-">27.自定义拦截器</h2>
+<ol>
+<li>定义一个实现了Interceptor接口的拦截器</li><li>在struts.xml文件中配置拦截器</li></ol>
+<h2 id="28-struts2-">28.struts2的配置文件</h2>
+<ul>
+<li>配置常量可以在5类配置文件中进行配置</li><li>它们的顺序如下，如果有重复的配置，后面的配置将会覆盖之前的配置<ul>
+<li>struts-default.xml</li><li>struts-pluging.xml</li><li>struts.xml<constant></li><li>struts.properties</li><li>Web.xml</li></ul>
+</li></ul>
+<h2 id="29-">29.文件上传</h2>
+<ol>
+<li>编写jsp上传页面，form表单的enctype属性=multipart/form-data;还需要增加一个file组件；</li><li>编写Action时，每个上传文件应该对应三个属性<ul>
+<li>例如上传组件的名字是pic,那么，三个属性分别是：<ul>
+<li>File pic;　　//文件本身</li><li>String picFileName;　　//文件名</li><li>String picContentType;　　//文件内容类型</li></ul>
+</li></ul>
+</li><li>如果想改变上传文件的最大字节数，可以在struts.properties中修改struts.multipart.maxSize的值</li><li><p>若要防止上传文件名重复而被覆盖，并把文件放到工程中，可以如下操作：</p>
+<pre><code> //获取pic的真实路径
+ String path = ServletActionContext.getServletContext().getRealPath(&quot;/pics&quot;);
+ String[] names = picFileName.split(&quot;\\.&quot;);
+
+ String extend = names[names.length-1];
+
+ //生成一个随机文件名
+ String name = UUID.randomUUID().toString()+&quot;.&quot;+extend;
+
+ System.out.println(name);
+ //上传之后存在服务器的硬盘上；
+ try {
+     FileUtils.copyFile(pic, new File(path+&quot;/&quot;+name));
+ } catch (IOException e) {
+     e.printStackTrace();
+ }
+</code></pre></li></ol>
+<h2 id="30-">30.多文件上传</h2>
+<ul>
+<li>可以通过数组或List集合来实现多文件上传</li></ul>
+<h2 id="31-">31.文件下载</h2>
+<ul>
+<li>实现原理：<ul>
+<li>通过result来实现，type的值是stream</li></ul>
+</li><li>实现步骤<ol>
+<li>在Action中返回一个type=stream的result；</li><li>配置result，为它添加两个属性，分别是：<ul>
+<li>inputName</li><li>contentDisposition<br>其中inputName代表返回给浏览器的一个字节流，因此需要在action中定义一个返回字节流的方法；例如<br> <code>&lt;param name=&quot;inputName&quot;&gt;image&lt;/param&gt;</code><br>那么，struts2将会调用action中的getImage方法，并且将返回的字节流写到浏览器中，完成下载                                                                                                                                                                                                                                                                                                                                                                                                                                                     </li></ul>
+</li></ol>
+</li></ul>
+<h2 id="32-struts1-struts2-">32.Struts1与Struts2的区别</h2>
+<ol>
+<li>Action实现类方面：<ul>
+<li>Struts1要求Action继承一个抽象基类</li><li>Struts2中Action类既可以实现一个Action接口，也可以实现其他接口</li></ul>
+</li><li>Servlet依赖方面：<ul>
+<li>Struts1 Action依赖于Servlet API，因为Struts1 Action的execute()方法中有HttpServletRequest和HttpServletResponse方法</li><li>Struts2 Action不再依赖于Servlet API，因为Struts2的Action是由POJO组成，在Struts2中，Servlet上下文以简单Map的形式表现出来，这使得Action可以进行独立的测试</li></ul>
+</li><li>可测试方面：<ul>
+<li>Struts1中Action的测试依赖于Web容器或借助第三方扩展：Struts TestCase</li><li>Struts2中Action可通过初始化、设置属性、调用方法来测试</li></ul>
+</li><li>封装请求参数：<ul>
+<li>Struts1使用ActionForm对象封装用户的请求参数，所有的ActionForm必须继承一个基类——ActionForm。开发人员需要创建大量的ActionForm类封装用户请求参数</li><li>Struts2直接使用Action属性来封装用户请求参数，避免了大量开发ActionForm类的繁琐。可使用ModelDriven模式</li></ul>
+</li><li>表达式语言方面：<ul>
+<li>Struts1使用jstl</li><li>Struts2可以使用jstl，但有更强大的ognl</li></ul>
+</li><li>绑定值到视图：<ul>
+<li>Struts1使用标准JSP机制把对象绑定到视图页面</li><li>Struts2使用ValueStack技术，使标签库能够访问值，而不需要把对象和视图页面绑定在一起</li></ul>
+</li><li>类型转换：<ul>
+<li>Struts1中ActionForm属性通常是String类型。Struts1使用Commons-Beanutils进行类型转换，转换器不可配置</li><li>Struts2使用ognl进行类型转换，支持基本数据类型和常用对象之间的转换</li></ul>
+</li><li>数据校验：<ul>
+<li>Struts1和Struts2都支持通过validate()方法的手动验证</li><li>Struts1支持在ActionForm重写validate()方法中手动校验或者通过整合Commons alidator框架完成数据校验</li><li>Struts2支持通过重写validate()方法进行校验，也支持整合XWork校验框架进行校验</li></ul>
+</li><li>Action执行控制：<ul>
+<li>Struts1支持每一个模块对应一个请求处理(即生命周期的概念)，但是模块中的所有Action必须共享相同的生命周期。</li><li>Struts2支持通过拦截器堆栈为每一个Action创建不同的生命周期</li></ul>
+</li><li>捕获输入<ul>
+<li>Struts1使用ActionForm对象捕获输入</li><li>Struts2直接使用Action属性作为输入属性，消除了对第二个输入对象的需求</li></ul>
+</li></ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
