@@ -472,7 +472,7 @@ vertical-align:1px;
 <hr>
 <h2 id="1-hibernate-">1.hibernate是一个持久层框架</h2>
 <p><br/></p>
-<p><center><img src="model.png" alt="框架模型"></center></p>
+<p><center><img src="images/model.png" alt="框架模型"></center></p>
 <h2 id="2-orm">2.什么是orm</h2>
 <ul>
 <li>Object relationship mapping</li><li>编程语言：oop</li><li>数据库：rdbms</li></ul>
@@ -515,7 +515,7 @@ vertical-align:1px;
 <p>hibernate中如果对对象做了修改，若纳入到session的管理，不执行session的update语句也能将做出的修改写入数据库中</p>
 <h2 id="10-po-po-">10.PO对象的三个状态(PO对象的生命周期)</h2>
 <ul>
-<li>瞬时态：从没有持久化，也没有纳入到session的管理</li><li>持久态：纳入session的管理</li><li>游离态：曾经是持久化对象，当前不与session关联<br/><br><center><img src="lifecycle.png" alt="持久化对象的生命周期"><center/></li></ul>
+<li>瞬时态：从没有持久化，也没有纳入到session的管理</li><li>持久态：纳入session的管理</li><li>游离态：曾经是持久化对象，当前不与session关联<br/><br><center><img src="image/lifecycle.png" alt="持久化对象的生命周期"><center/></li></ul>
 <h2 id="11-">11.常用的方法</h2>
 <ul>
 <li>flush：刷新</li><li>save：插入;忽略主键的设置</li><li>persist：插入，主键手动设置会报错</li><li>load：加载数据，如果数据库中没有相应的记录，则会抛出异常对象不找到(org.hibernate.ObjectNotFoundException)</li><li>get： 根据oid获得对应的PO对象，如果查询不到数据，返回 null</li><li>evict：从session中移除一个实体</li><li>clear：从session中移除所有的对象</li><li>close：关闭session，并从session中移除所有对象</li><li>update：修改游离态的对象（将游离态对象转成持久态对象）</li><li>delete：删除</li></ul>
