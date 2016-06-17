@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://jcip.net/listings.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Concurrency in Practice - Code Listings</title>
+
+    <meta name="description" content="JCiP code listings">
+    <meta name="author" content="Tim Peierls">
+    <meta name="author" content="Brian Goetz">
+    <link rel="apple-touch-icon" href="http://jcip.net/img/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="./Java Concurrency in Practice - Code Listings_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Java Concurrency in Practice - Code Listings_files/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="./Java Concurrency in Practice - Code Listings_files/jcip-theme.css">
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+    <script async="" src="./Java Concurrency in Practice - Code Listings_files/analytics.js"></script><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-38133818-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <style>
+      #main li {
+        height: 28px;
+        margin-top: 12px;
+      }
+      #main li.yuk::after {
+        position: absolute;
+        content: url('images/mryuk.gif');
+      }
+    </style>
+  </head>
+
+  <body role="document">
+    <header class="navbar navbar-default navbar-fixed-top">      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://jcip.net/" data-toggle="tooltip" data-placement="bottom" title="Top">
+            <img src="./Java Concurrency in Practice - Code Listings_files/jcip-logo.jpg" class="img-responsive" alt="Java Concurrency in Practice">
+          </a>
+        </div>
+        <nav id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <h4 class="navbar-text navbar-title">Java Concurrency in Practice</h4>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="faq-link">
+              <a href="http://jcip.net/faq.html" class="navbar-link"><span class="glyphicon glyphicon-question-sign"></span> FAQs</a>
+            </li>
+          </ul>
+        </nav><!--/.navbar-collapse -->
+      </div>
+</header>
+
+    <div id="main" class="container" role="main">
+
+      <div class="page-header">
+        <h1>Code Listings</h1>
+      </div>
+
+      <p class="alert alert-info">
+        Written by Brian Goetz and Tim Peierls with assistance from members of
+        JCP JSR-166 Expert Group and released to the public domain, as explained by the
+        <a href="http://creativecommons.org/licenses/publicdomain">Creative Commons public domain license</a>.
+      </p>
+      <p class="alert alert-warning">
+        Note that this license is no longer recommended by Creative Commons for any use, and
+        has never been recommended for use with software.
+        Nevertheless, this is the license that we picked in 2006.
+      </p>
+
+      <!-- page body -->
+      <h2>Introduction</h2>
+
+      <ul class="list-unstyled">
+        <li>1.1 <a href="http://jcip.net/listings/UnsafeSequence.java">Non-thread-safe sequence generator.</a></li>
+        <li>1.2 <a href="http://jcip.net/listings/Sequence.java">Thread-safe sequence generator.</a></li>
+      </ul>
+
+      <h2>Thread Safety</h2>
+
+      <ul class="list-unstyled">
+        <li>2.1 <a href="http://jcip.net/listings/StatelessFactorizer.java">A stateless servlet.</a></li>
+        <li class="yuk">2.2 <a href="http://jcip.net/listings/UnsafeCountingFactorizer.java">Servlet that counts requests without the necessary
+          synchronization.</a></li>
+        <li class="yuk">2.3 <a href="http://jcip.net/listings/LazyInitRace.java">Race condition in lazy initialization.</a></li>
+        <li>2.4 <a href="http://jcip.net/listings/CountingFactorizer.java">Servlet that counts requests using AtomicLong.</a><a></a></li><a>
+        </a><li class="yuk"><a>2.5 </a><a href="http://jcip.net/listings/UnsafeCachingFactorizer.java">Servlet that attempts to cache its last result
+          without adequate atomicity.</a></li>
+        <li class="yuk">2.6 <a href="http://jcip.net/listings/SynchronizedFactorizer.java">Servlet that caches last result, but with unnacceptably
+          poor concurrency.</a></li>
+        <li>2.7 <a href="http://jcip.net/listings/NonReentrantDeadlock.java">Code that would deadlock if intrinsic locks were
+          not reentrant.</a></li>
+        <li>2.8 <a href="http://jcip.net/listings/CachedFactorizer.java">Servlet that caches its last request and result.</a></li>
+      </ul>
+
+      <h2>Sharing Objects</h2>
+
+      <ul class="list-unstyled">
+        <li class="yuk">3.1 <a href="http://jcip.net/listings/NoVisibility.java">Sharing variables without synchronization.</a></li>
+        <li>3.2 <a href="http://jcip.net/listings/MutableInteger.java">Non-thread-safe mutable integer holder.</a></li>
+        <li>3.3 <a href="http://jcip.net/listings/SynchronizedInteger.java">Thread-safe mutable integer holder.</a></li>
+        <li>3.4 <a href="http://jcip.net/listings/CountingSheep.java">Counting sheep.</a></li>
+        <li>3.5 <a href="http://jcip.net/listings/Secrets.java">Publishing an object.</a></li>
+        <li class="yuk">3.6 <a href="http://jcip.net/listings/UnsafeStates.java">Allowing internal mutable state to escape.</a></li>
+        <li class="yuk">3.7 <a href="http://jcip.net/listings/ThisEscape.java">Implicitly allowing the this reference to escape.</a></li>
+        <li>3.8 <a href="http://jcip.net/listings/SafeListener.java">Using a factory method to prevent the this reference from escaping during construction.</a></li>
+        <li>3.9 <a href="http://jcip.net/listings/Animals.java">Thread confinement of local primitive and reference variables.</a></li>
+        <li>3.10 <a href="http://jcip.net/listings/ConnectionDispenser.java">Using ThreadLocal to ensure thread confinement.</a></li>
+        <li>3.11 <a href="http://jcip.net/listings/ThreeStooges.java">Immutable class built out of mutable underlying objects.</a></li>
+        <li>3.12 <a href="http://jcip.net/listings/OneValueCache.java">Immutable holder for caching a number and its factors.</a></li>
+        <li>3.13 <a href="http://jcip.net/listings/VolatileCachedFactorizer.java">Caching the last result using a volatile reference to an immutable holder object.</a></li>
+        <li class="yuk">3.14 <a href="http://jcip.net/listings/StuffIntoPublic.java">Publishing an object without adequate synchronization.</a></li>
+        <li>3.15 <a href="http://jcip.net/listings/Holder.java">Class at risk of failure if not properly published.</a></li>
+      </ul>
+
+      <h2>Composing Objects</h2>
+
+      <ul class="list-unstyled">
+        <li>4.1 <a href="http://jcip.net/listings/Counter.java">Simple thread-safe counter using the Java monitor pattern.</a></li>
+        <li>4.2 <a href="http://jcip.net/listings/PersonSet.java">Using confinement to ensure thread safety.</a></li>
+        <li>4.3 <a href="http://jcip.net/listings/PrivateLock.java">Guarding state with a private lock.</a></li>
+        <li>4.4 <a href="http://jcip.net/listings/MonitorVehicleTracker.java">Monitor-based vehicle tracker implementation.</a></li>
+        <li>4.5 <a href="http://jcip.net/listings/MutablePoint.java">Mutable point class similar to java.awt.Point.</a></li>
+        <li>4.6 <a href="http://jcip.net/listings/Point.java">Immutable Point class used by DelegatingVehicleTracker.</a></li>
+        <li>4.7 <a href="http://jcip.net/listings/DelegatingVehicleTracker.java">Delegating thread safety to a ConcurrentHashMap.</a></li>
+        <li>4.8 <a href="http://jcip.net/listings/DelegatingVehicleTracker.java">Returning a static copy of the location set instead of a 'live' one.</a></li>
+        <li>4.9 <a href="http://jcip.net/listings/VisualComponent.java">Delegating thread safety to multiple underlying state variables.</a></li>
+        <li class="yuk">4.10 <a href="http://jcip.net/listings/NumberRange.java">Number range class that does not sufficiently protect its invariants.</a></li>
+        <li>4.11 <a href="http://jcip.net/listings/SafePoint.java">Thread-safe mutable point class.</a></li>
+        <li>4.12 <a href="http://jcip.net/listings/PublishingVehicleTracker.java">Vehicle tracker that safely publishes underlying state.</a></li>
+        <li>4.13 <a href="http://jcip.net/listings/BetterVector.java">Extending Vector to have a put-if-absent method.</a></li>
+        <li class="yuk">4.14 <a href="http://jcip.net/listings/ListHelpers.java">Non-thread-safe attempt to implement put-if-absent.</a></li>
+        <li>4.15 <a href="http://jcip.net/listings/ListHelpers.java">Implementing put-if-absent with client-side locking.</a></li>
+        <li>4.16 <a href="http://jcip.net/listings/ImprovedList.java">Implementing put-if-absent using composition.</a></li>
+      </ul>
+
+      <h2>Building Blocks</h2>
+
+      <ul class="list-unstyled">
+        <li> 5.1 <a href="http://jcip.net/listings/UnsafeVectorHelpers.java">Compound actions on a Vector that may produce confusing results.</a></li>
+        <li> 5.2 <a href="http://jcip.net/listings/SafeVectorHelpers.java">Compound actions on Vector using client-side locking.</a></li>
+        <li> 5.3 Iteration that may throw ArrayIndexOutOfBoundsException. (fragment)</li>
+        <li> 5.4 Iteration with client-side locking. (fragment)</li>
+        <li> 5.5 Iterating a List with an Iterator. (fragment)</li>
+        <li class="yuk"> 5.6 <a href="http://jcip.net/listings/HiddenIterator.java">Iteration hidden within string concatenation.</a></li>
+        <li> 5.7 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ConcurrentMap.html#method_summary">
+          ConcurrentMap interface.</a> (external link to Javadoc)</li>
+        <li> 5.8 <a href="http://jcip.net/listings/ProducerConsumer.java">Producer and consumer tasks in a desktop search application.</a></li>
+        <li> 5.9 <a href="http://jcip.net/listings/ProducerConsumer.java">Starting the desktop search.</a></li>
+        <li> 5.10 <a href="http://jcip.net/listings/TaskRunnable.java">Restoring the interrupted status so as not to swallow the interrupt.</a></li>
+        <li> 5.11 <a href="http://jcip.net/listings/TestHarness.java">Using CountDownLatch for starting and stopping threads in timing tests.</a></li>
+        <li> 5.12 <a href="http://jcip.net/listings/Preloader.java">Using FutureTask to preload data that is needed later.</a></li>
+        <li> 5.13 <a href="http://jcip.net/listings/LaunderThrowable.java">Coercing an unchecked Throwable to a RuntimeException.</a></li>
+        <li> 5.14 <a href="http://jcip.net/listings/BoundedHashSet.java">Using Semaphore to bound a collection.</a></li>
+        <li> 5.15 <a href="http://jcip.net/listings/CellularAutomata.java">Coordinating computation in a cellular automaton with CyclicBarrier.</a></li>
+        <li> 5.16 <a href="http://jcip.net/listings/Memoizer1.java">Initial cache attempt using HashMap and synchronization.</a></li>
+        <li> 5.17 <a href="http://jcip.net/listings/Memoizer2.java">Replacing HashMap with ConcurrentHashMap.</a></li>
+        <li> 5.18 <a href="http://jcip.net/listings/Memoizer2.java">Memoizing wrapper using FutureTask.</a></li>
+        <li> 5.19 <a href="http://jcip.net/listings/Memoizer.java">Final implementation of Memoizer.</a></li>
+        <li> 5.20 <a href="http://jcip.net/listings/Factorizer.java">Factorizing servlet that caches results using Memoizer.</a></li>
+      </ul>
+
+      <h2>Task Execution</h2>
+
+      <ul class="list-unstyled">
+        <li> 6.1 <a href="http://jcip.net/listings/SingleThreadWebServer.java">Sequential web server. </a></li>
+        <li> 6.2 <a href="http://jcip.net/listings/ThreadPerTaskWebServer.java">Web server that starts a new thread for each request.</a></li>
+        <li> 6.3 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/Executor.html#method_summary">
+          Executor interface.</a> (external link to Javadoc) </li>
+        <li> 6.4 <a href="http://jcip.net/listings/TaskExecutionWebServer.java">Web server using a thread pool.</a></li>
+        <li> 6.5 <a href="http://jcip.net/listings/ThreadPerTaskExecutor.java">Executor that starts a new thread for each task.</a></li>
+        <li> 6.6 <a href="http://jcip.net/listings/WithinThreadExecutor.java">Executor that executes tasks synchronously in the calling thread.</a></li>
+        <li> 6.7 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ExecutorService.html#method_summary">
+          Lifecycle methods in ExecutorService.</a> (external link to Javadoc, shows <em>all</em> methods, not just lifecycle methods) </li>
+        <li> 6.8 <a href="http://jcip.net/listings/LifecycleWebServer.java">Web server with shutdown support.</a></li>
+        <li> 6.9 <a href="http://jcip.net/listings/OutOfTime.java">Class illustrating confusing Timer behavior.</a></li>
+        <li> 6.10 <a href="http://jcip.net/listings/SingleThreadRenderer.java">Rendering page elements sequentially.</a></li>
+        <li> 6.11 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/Callable.html#method_summary">
+          Callable</a> and <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/Future.html#method_summary">
+          Future</a> interfaces. (external links to Javadoc) </li>
+        <li> 6.12 Default implementation of newTaskFor in ThreadPoolExecutor. (See JDK source) </li>
+        <li> 6.13 <a href="http://jcip.net/listings/FutureRenderer.java">Waiting for image download with Future.</a></li>
+        <li> 6.14 QueueingFuture class used by ExecutorCompletionService. (See JDK source) </li>
+        <li> 6.15 <a href="http://jcip.net/listings/Renderer.java">Using CompletionService to render page elements as they become available.</a></li>
+        <li> 6.16 <a href="http://jcip.net/listings/RenderWithTimeBudget.java">Fetching an advertisement with a time budget.</a></li>
+        <li> 6.17 <a href="http://jcip.net/listings/TimeBudget.java">Requesting travel quotes under a time budget.</a></li>
+      </ul>
+
+      <h2>Cancellation and Shutdown</h2>
+
+      <ul class="list-unstyled">
+        <li> 7.1 <a href="http://jcip.net/listings/PrimeGenerator.java">Using a volatile field to hold cancellation state.</a></li>
+        <li> 7.2 <a href="http://jcip.net/listings/PrimeGenerator.java">Generating a second's worth of prime numbers.</a></li>
+        <li class="yuk"> 7.3 <a href="http://jcip.net/listings/BrokenPrimeProducer.java">Unreliable cancellation that can leave producers stuck in a blocking operation.</a></li>
+        <li> 7.4 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Thread.html#method_summary">
+          Interruption methods in Thread.</a> (external link to Javadoc, shows <em>all</em> <tt>Thread</tt> methods, not just interruption-related) </li>
+        <li> 7.5 <a href="http://jcip.net/listings/PrimeProducer.java">Using interruption for cancellation.</a></li>
+        <li> 7.6 Propagating InterruptedException to callers. (fragment) </li>
+        <li> 7.7 <a href="http://jcip.net/listings/NoncancelableTask.java">Noncancelable task that restores interruption before exit.</a></li>
+        <li class="yuk"> 7.8 <a href="http://jcip.net/listings/TimedRun1.java">Scheduling an interrupt on a borrowed thread.</a></li>
+        <li> 7.9 <a href="http://jcip.net/listings/TimedRun2.java">Interrupting a task in a dedicated thread.</a></li>
+        <li> 7.10 <a href="http://jcip.net/listings/TimedRun.java">Cancelling a task using Future.</a></li>
+        <li> 7.11 <a href="http://jcip.net/listings/ReaderThread.java">Encapsulating nonstandard cancellation in a Thread by overriding interrupt.</a></li>
+        <li> 7.12 <a href="http://jcip.net/listings/SocketUsingTask.java">Encapsulating nonstandard cancellation in a task with newTaskFor. </a></li>
+        <li> 7.13 <a href="http://jcip.net/listings/LogWriter.java">Producer-consumer logging service with no shutdown support.</a></li>
+        <li> 7.14 Unreliable way to add shutdown support to the logging service. (fragment) </li>
+        <li> 7.15 <a href="http://jcip.net/listings/LogService.java">Adding reliable cancellation to LogWriter.</a></li>
+        <li> 7.16 Logging service that uses an ExecutorService. </li>
+        <li> 7.17 <a href="http://jcip.net/listings/IndexingService.java">Shutdown with poison pill.</a></li>
+        <li> 7.18 <a href="http://jcip.net/listings/IndexingService.java">Producer thread for IndexingService.</a></li>
+        <li> 7.19 <a href="http://jcip.net/listings/IndexingService.java">Consumer thread for IndexingService.</a></li>
+        <li> 7.20 <a href="http://jcip.net/listings/CheckForMail.java">Using a private Executor whose lifetime is bounded by a method call.</a></li>
+        <li> 7.21 <a href="http://jcip.net/listings/TrackingExecutor.java">ExecutorService that keeps track of cancelled tasks after shutdown.</a></li>
+        <li> 7.22 <a href="http://jcip.net/listings/WebCrawler.java">Using TrackingExecutorService to save unfinished tasks for later execution.</a></li>
+        <li> 7.23 Typical thread-pool worker thread structure. (fragment) </li>
+        <li> 7.24 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Thread.UncaughtExceptionHandler.html#method_summary">
+          UncaughtExceptionHandler interface.</a> (external link to Javadoc) </li>
+        <li> 7.25 <a href="http://jcip.net/listings/UEHLogger.java">UncaughtExceptionHandler that logs the exception.</a></li>
+        <li> 7.26 Registering a shutdown hook to stop the logging service. (fragment) </li>
+      </ul>
+
+      <h2>Applying Thread Pools</h2>
+
+      <ul class="list-unstyled">
+        <li class="yuk"> 8.1 <a href="http://jcip.net/listings/ThreadDeadlock.java">Task that deadlocks in a single-threaded Executor.</a></li>
+        <li> 8.2 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ThreadPoolExecutor.html#ThreadPoolExecutor(int,%20int,%20long,%20java.util.concurrent.TimeUnit,%20java.util.concurrent.BlockingQueue,%20java.util.concurrent.ThreadFactory,%20java.util.concurrent.RejectedExecutionHandler)">
+          General constructor for ThreadPoolExecutor.</a> (external link to Javadoc) </li>
+        <li> 8.3 Creating a fixed-sized thread pool with a bounded queue and the caller-runs saturation policy. (fragment) </li>
+        <li> 8.4 <a href="http://jcip.net/listings/BoundedExecutor.java">Using a Semaphore to throttle task submission.</a></li>
+        <li> 8.5 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ThreadFactory.html#method_summary">
+          ThreadFactory interface.</a> (external link to Javadoc) </li>
+        <li> 8.6 <a href="http://jcip.net/listings/MyThreadFactory.java">Custom thread factory.</a></li>
+        <li> 8.7 <a href="http://jcip.net/listings/MyAppThread.java">Custom thread base class.</a></li>
+        <li> 8.8 Modifying an Executor created with the standard factories. (fragment) </li>
+        <li> 8.9 <a href="http://jcip.net/listings/TimingThreadPool.java">Thread pool extended with logging and timing.</a></li>
+        <li> 8.10 <a href="http://jcip.net/listings/TransformingSequential.java">Transforming sequential execution into parallel execution.</a></li>
+        <li> 8.11 <a href="http://jcip.net/listings/TransformingSequential.java">Transforming sequential tail-recursion into parallelized recursion.</a></li>
+        <li> 8.12 <a href="http://jcip.net/listings/TransformingSequential.java">Waiting for results to be calculated in parallel.</a></li>
+        <li> 8.13 <a href="http://jcip.net/listings/Puzzle.java">Abstraction for puzzles like the 'sliding blocks puzzle'.</a></li>
+        <li> 8.14 <a href="http://jcip.net/listings/PuzzleNode.java">Link node for the puzzle solver framework.</a></li>
+        <li> 8.15 <a href="http://jcip.net/listings/SequentialPuzzleSolver.java">Sequential puzzle solver.</a></li>
+        <li> 8.16 <a href="http://jcip.net/listings/ConcurrentPuzzleSolver.java">Concurrent version of puzzle solver.</a></li>
+        <li> 8.17 <a href="http://jcip.net/listings/ValueLatch.java">Result-bearing latch used by ConcurrentPuzzleSolver.</a></li>
+        <li> 8.18 <a href="http://jcip.net/listings/PuzzleSolver.java">Solver that recognizes when no solution exists.</a></li>
+      </ul>
+
+      <h2>GUI Applications</h2>
+
+      <ul class="list-unstyled">
+        <li> 9.1 <a href="http://jcip.net/listings/SwingUtilities.java">Implementing SwingUtilities using an Executor.</a></li>
+        <li> 9.2 <a href="http://jcip.net/listings/GuiExecutor.java">Executor built atop SwingUtilities.</a></li>
+        <li> 9.3 Simple event listener. (fragment) </li>
+        <li> 9.4 <a href="http://jcip.net/listings/ListenerExamples.java">Binding a long-running task to a visual component.</a></li>
+        <li> 9.5 <a href="http://jcip.net/listings/ListenerExamples.java">Long-running task with user feedback.</a></li>
+        <li> 9.6 <a href="http://jcip.net/listings/ListenerExamples.java">Cancelling a long-running task.</a></li>
+        <li> 9.7 <a href="http://jcip.net/listings/BackgroundTask.java">Background task class supporting cancellation, completion notification, and progress notification.</a></li>
+        <li> 9.8 <a href="http://jcip.net/listings/ListenerExamples.java">Initiating a long-running, cancellable task with BackgroundTask.</a></li>
+
+        <h2>Avoiding Liveness Hazards</h2>
+
+        <li class="yuk"> 10.1 <a href="http://jcip.net/listings/LeftRightDeadlock.java">Simple lock-ordering deadlock.</a></li>
+        <li class="yuk"> 10.2 <a href="http://jcip.net/listings/DynamicOrderDeadlock.java">Dynamic lock-ordering deadlock.</a></li>
+        <li> 10.3 <a href="http://jcip.net/listings/InduceLockOrder.java">Inducing a lock ordering to avoid deadlock.</a></li>
+        <li> 10.4 <a href="http://jcip.net/listings/DemonstrateDeadlock.java">Driver loop that induces deadlock under typical conditions.</a></li>
+        <li class="yuk"> 10.5 <a href="http://jcip.net/listings/CooperatingDeadlock.java">Lock-ordering deadlock between cooperating objects.</a></li>
+        <li> 10.6 <a href="http://jcip.net/listings/CooperatingNoDeadlock.java">Using open calls to avoiding deadlock between cooperating objects.</a></li>
+        <li> 10.7 Portion of thread dump after deadlock. (not a code listing) </li>
+      </ul>
+
+      <h2>Performance and Scalability</h2>
+
+      <ul class="list-unstyled">
+        <li> 11.1 <a href="http://jcip.net/listings/WorkerThread.java">Serialized access to a task queue.</a></li>
+        <li class="yuk"> 11.2 Synchronization that has no effect. (fragment) </li>
+        <li> 11.3 <a href="http://jcip.net/listings/ThreeStooges.java">Candidate for lock elision.</a></li>
+        <li> 11.4 <a href="http://jcip.net/listings/AttributeStore.java">Holding a lock longer than necessary.</a></li>
+        <li> 11.5 <a href="http://jcip.net/listings/BetterAttributeStore.java">Reducing lock duration.</a></li>
+        <li> 11.6 <a href="http://jcip.net/listings/ServerStatusBeforeSplit.java">Candidate for lock splitting.</a></li>
+        <li> 11.7 <a href="http://jcip.net/listings/ServerStatusAfterSplit.java">ServerStatus refactored to use split locks.</a></li>
+        <li> 11.8 <a href="http://jcip.net/listings/StripedMap.java">Hash-based map using lock striping.</a></li>
+      </ul>
+
+      <h2>Testing Concurrent Programs</h2>
+
+      <ul class="list-unstyled">
+        <li> 12.1 <a href="http://jcip.net/listings/SemaphoreBoundedBuffer.java">Bounded buffer using Semaphore.</a></li>
+        <li> 12.2 <a href="http://jcip.net/listings/TestBoundedBuffer.java">Basic unit tests for BoundedBuffer.</a></li>
+        <li> 12.3 <a href="http://jcip.net/listings/TestBoundedBuffer.java">Testing blocking and responsiveness to interruption.</a></li>
+        <li> 12.4 <a href="http://jcip.net/listings/XorShift.java">Medium-quality random number generator suitable for testing.</a></li>
+        <li> 12.5 <a href="http://jcip.net/listings/PutTakeTest.java">Producer-consumer test program for BoundedBuffer.</a></li>
+        <li> 12.6 <a href="http://jcip.net/listings/PutTakeTest.java">Producer and consumer classes used in PutTakeTest.</a></li>
+        <li> 12.7 <a href="http://jcip.net/listings/TestBoundedBuffer.java">Testing for resource leaks.</a></li>
+        <li> 12.8 <a href="http://jcip.net/listings/TestThreadPool.java">Thread factory for testing ThreadPoolExecutor.</a></li>
+        <li> 12.9 <a href="http://jcip.net/listings/TestThreadPool.java">Test method to verify thread pool expansion.</a></li>
+        <li> 12.10 Using Thread.yield to generate more interleavings. (fragment) </li>
+        <li> 12.11 <a href="http://jcip.net/listings/BarrierTimer.java">Barrier-based timer.</a></li>
+        <li> 12.12 <a href="http://jcip.net/listings/TimedPutTakeTest.java">Testing with a barrier-based timer.</a></li>
+        <li> 12.13 <a href="http://jcip.net/listings/TimedPutTakeTest.java">Driver program for TimedPutTakeTest.</a></li>
+      </ul>
+
+      <h2>Explicit Locks</h2>
+
+      <ul class="list-unstyled">
+        <li> 13.1 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/locks/Lock.html#method_summary">
+          Lock interface.</a> (external link to Javadoc) </li>
+        <li> 13.2 Guarding object state using ReentrantLock. (fragment) </li>
+        <li> 13.3 <a href="http://jcip.net/listings/DeadlockAvoidance.java">Avoiding lock-ordering deadlock using try Lock.</a></li>
+        <li> 13.4 <a href="http://jcip.net/listings/TimedLocking.java">Locking with a time budget.</a></li>
+        <li> 13.5 <a href="http://jcip.net/listings/InterruptibleLocking.java">Interruptible lock acquisition.</a></li>
+        <li> 13.6 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/locks/ReadWriteLock.html#method_summary">
+          ReadWriteLock interface.</a> (external link to Javadoc) </li>
+        <li> 13.7 <a href="http://jcip.net/listings/ReadWriteMap.java">Wrapping a Map with a read-write lock.</a></li>
+      </ul>
+
+      <h2>Building Custom Synchronizers</h2>
+
+      <ul class="list-unstyled">
+        <li> 14.1 Structure of blocking state-dependent actions. (fragment) </li>
+        <li> 14.2 <a href="http://jcip.net/listings/BaseBoundedBuffer.java">Base class for bounded buffer implementations.</a></li>
+        <li> 14.3 <a href="http://jcip.net/listings/GrumpyBoundedBuffer.java">Bounded buffer that balks when preconditions are not met.</a></li>
+        <li> 14.4 <a href="http://jcip.net/listings/GrumpyBoundedBuffer.java">Client logic for calling GrumpyBoundedBuffer.</a></li>
+        <li> 14.5 <a href="http://jcip.net/listings/SleepyBoundedBuffer.java">Bounded buffer using crude blocking.</a></li>
+        <li> 14.6 <a href="http://jcip.net/listings/BoundedBuffer.java">Bounded buffer using condition queues.</a></li>
+        <li> 14.7 Canonical form for state-dependent methods. (fragment) </li>
+        <li> 14.8 <a href="http://jcip.net/listings/BoundedBuffer.java">Using conditional notification in BoundedBuffer.put.</a></li>
+        <li> 14.9 <a href="http://jcip.net/listings/ThreadGate.java">Recloseable gate using wait and notifyAll.</a></li>
+        <li> 14.10 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/locks/Condition.html#method_summary">
+          Condition interface.</a> (external link to Javadoc) </li>
+        <li> 14.11 <a href="http://jcip.net/listings/ConditionBoundedBuffer.java">Bounded buffer using explicit condition variables.</a></li>
+        <li> 14.12 <a href="http://jcip.net/listings/SemaphoreOnLock.java">Counting semaphore implemented using Lock.</a></li>
+        <li> 14.13 Canonical forms for acquisition and release in AQS. (fragment) </li>
+        <li> 14.14 <a href="http://jcip.net/listings/OneShotLatch.java">Binary latch using AbstractQueuedSynchronizer.</a></li>
+        <li> 14.15 tryAcquire implementation from nonfairReentrantLock. (See JDK source) </li>
+        <li> 14.16 tryAcquireShared and tryReleaseShared from Semaphore. (See JDK source) </li>
+      </ul>
+
+      <h2>Atomic Variables and Nonblocking Synchronization</h2>
+
+      <ul class="list-unstyled">
+        <li> 15.1 <a href="http://jcip.net/listings/SimulatedCAS.java">Simulated CAS operation.</a></li>
+        <li> 15.2 <a href="http://jcip.net/listings/CasCounter.java">Nonblocking counter using CAS.</a></li>
+        <li> 15.3 <a href="http://jcip.net/listings/CasNumberRange.java">Preserving multivariable invariants using CAS.</a></li>
+        <li> 15.4 <a href="http://jcip.net/listings/ReentrantLockPseudoRandom.java">Random number generator using ReentrantLock.</a></li>
+        <li> 15.5 <a href="http://jcip.net/listings/AtomicPseudoRandom.java">Random number generator using AtomicInteger.</a></li>
+        <li> 15.6 <a href="http://jcip.net/listings/ConcurrentStack.java">Nonblocking stack using Treiber's algorithm.</a></li>
+        <li> 15.7 <a href="http://jcip.net/listings/LinkedQueue.java">Insertion in the Michael-Scott nonblocking queue algorithm.</a></li>
+        <li> 15.8 Using atomic field updaters in ConcurrentLinkedQueue. (fragment) </li>
+      </ul>
+
+      <h2>The Java Memory Model</h2>
+
+      <ul class="list-unstyled">
+        <li class="yuk"> 16.1 <a href="http://jcip.net/listings/PossibleReordering.java">Insufficiently synchronized program that can have surprising results.</a></li>
+        <li> 16.2 Inner class of FutureTask illustrating synchronization piggybacking. (See JDK source) </li>
+        <li class="yuk"> 16.3 <a href="http://jcip.net/listings/UnsafeLazyInitialization.java">Unsafe lazy initialization.</a></li>
+        <li> 16.4 <a href="http://jcip.net/listings/SafeLazyInitialization.java">Thread-safe lazy initialization.</a></li>
+        <li> 16.5 <a href="http://jcip.net/listings/EagerInitialization.java">Eager initialization.</a></li>
+        <li> 16.6 <a href="http://jcip.net/listings/ResourceFactory.java">Lazy initialization holder class idiom.</a></li>
+        <li class="yuk"> 16.7 <a href="http://jcip.net/listings/DoubleCheckedLocking.java">Double-checked-locking antipattern.</a></li>
+        <li> 16.8 <a href="http://jcip.net/listings/SafeStates.java">Initialization safety for immutable objects.</a></li>
+      </ul>
+
+    </div><!-- /.container -->
+    <footer class="footer navbar">      <div class="container">
+        <nav id="footer" class="navbar-default">
+          <ul class="nav navbar-nav navbar-left">
+            <li id="author-link">
+              <a href="http://jcip.net/authors.html">
+                <span class="glyphicon glyphicon-user"></span>
+                About the Authors
+              </a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <p class="navbar-text">
+                <span class="glyphicon glyphicon-copyright-mark"></span>
+                Site content copyright 2006–2015 Tim Peierls and Brian Goetz
+              </p>
+            </li>
+          </ul>
+        </nav><!-- #footer -->
+      </div>
+</footer>
+
+    <script src="./Java Concurrency in Practice - Code Listings_files/jquery.min.js"></script>
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    -->
+    <script src="./Java Concurrency in Practice - Code Listings_files/bootstrap.min.js"></script>
+    <script src="./Java Concurrency in Practice - Code Listings_files/jcip-main.js"></script>
+  
+
+</body></html>
