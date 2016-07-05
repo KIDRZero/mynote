@@ -1,0 +1,6 @@
+com\liuyong666\mvcdemo\model\Course.class
+com\liuyong666\mvcdemo\model\Chapter.class
+com\liuyong666\mvcdemo\controller\CourseController.class
+com\liuyong666\mvcdemo\service\CourseService.class
+com\liuyong666\mvcdemo\controller\HelloMvcController.class
+com\liuyong666\mvcdemo\service\impl\CourseServiceImpl.class
