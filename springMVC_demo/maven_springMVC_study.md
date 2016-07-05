@@ -42,3 +42,7 @@ maven-archetype-webapp
 ### springMVC细节
 
 ![细节](http://i.imgur.com/PP0pmaG.jpg)
+
+### 感谢
+
+> 感谢慕课网提供的视频资源。
