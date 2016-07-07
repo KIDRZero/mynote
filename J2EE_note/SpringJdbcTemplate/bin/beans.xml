@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		
+		
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+			destroy-method="close">
+			<property name="driverClassName">
+				<value>com.mysql.jdbc.Driver</value>
+			</property>
+			<property name="url">
+				<value>jdbc:mysql://localhost:3306/test</value>
+			</property>
+			<property name="username">
+				<value>root</value>
+			</property>
+			<property name="password">
+				<value>root</value>
+			</property>
+	</bean>
+	
+	
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+			<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="studentDao" class="dao.impl.StudentDaoImpl" >	
+		<property name="temp" ref="jdbcTemplate"></property>	
+	</bean>
+
+	
+	<bean id="studentService" class="service.impl.StudentServiceImpl">
+		<property name="studentDao" ref="studentDao"></property>	
+	</bean>
+	
+	<!-- 处理JDBC的事务管理类 -->
+		<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
+		<!-- 配置处理事务的通知 -->
+		<tx:advice id="txAdvice" transaction-manager="transactionManager">
+			<tx:attributes>
+				<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
+				<tx:method name="delete" propagation="REQUIRED"	rollback-for="Exception" />
+				<tx:method name="update" propagation="REQUIRED"
+					rollback-for="Exception" />
+			</tx:attributes>
+		</tx:advice>
+	
+		<!-- 基于AOP的事务管理 -->
+		<aop:config>
+			<!-- 配置切入点 -->
+			<aop:pointcut id="allServiceMethods" expression="execution(* service.*.*(..))" />
+			<!-- 引入txAdvice事务通知  -->
+			<aop:advisor pointcut-ref="allServiceMethods" advice-ref="txAdvice" />
+		</aop:config>
+
+</beans>
