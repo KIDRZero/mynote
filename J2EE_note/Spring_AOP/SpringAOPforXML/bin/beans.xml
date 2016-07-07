@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:aop="http://www.springframework.org/schema/aop"      
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+        <aop:aspectj-autoproxy/> 
+        
+        <!--切面和业务bean都需要交给容器管理-->  
+        <bean id="personService" class="com.liuyong666.service.impl.PersonServiceBean"/>
+        <bean id="aspectbean" class="com.liuyong666.service.MyInterceptor"/>
+        <aop:config>
+        	<!-- 定义一个切面 -->  
+        	<aop:aspect id="asp" ref="aspectbean">
+        	
+        		<!-- 定义切入点,定义拦截表达式,前置通知,后置通知,等.. -->   
+	        	<aop:pointcut id="mycut" expression="execution (!void com.liuyong666.service.impl.PersonServiceBean.*(java.lang.String,..))"/>
+	        	<aop:before pointcut-ref="mycut"  method="doAccessCheck"/>
+	        	<aop:after-returning pointcut-ref="mycut" method="doAfterReturning"/>
+	        	<aop:after pointcut-ref="mycut" method="doAfter"/>
+	        	<aop:after-throwing pointcut-ref="mycut" method="doAfterThrowing"/>
+	        	<aop:around pointcut-ref="mycut" method="doBasicProfiling"/>
+        	
+        	</aop:aspect>
+        </aop:config>
+</beans>
